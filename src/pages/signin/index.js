@@ -13,7 +13,7 @@ import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { auth } from "../../services/firebaseConfig";
-import {signInWithEmailAndPassword} from "firebase       /auth"
+import {signInWithEmailAndPassword} from "firebase/auth"
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import {app} from "../../services/firebaseConfig.js";
