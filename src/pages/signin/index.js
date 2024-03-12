@@ -13,7 +13,7 @@ import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { auth } from "../../services/firebaseConfig";
-import {signInWithEmailAndPassword} from "firebase/auth"
+import {signInWithEmailAndPassword} from "firebase       /auth"
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import {app} from "../../services/firebaseConfig.js";
@@ -21,7 +21,8 @@ import {app} from "../../services/firebaseConfig.js";
 export default function Signin() {
   const [userMail, setUserMail] = useState("");
   const [userPass, setUserPass] = useState("");
-
+  
+  
   const navigation = useNavigation();
 
   function userlogin() {
@@ -30,6 +31,8 @@ export default function Signin() {
         const user = userCredential.user;
         alert("Login efetuado com sucesso!");
         console.log(user);
+        navigation.navigate("Home");
+        
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -66,11 +69,15 @@ export default function Signin() {
         />
 
         <TouchableOpacity style={styles.button} onPress={userlogin}>
+          
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonRegister} onPress={userlogin}>
-          <Text style={styles.registerText}>Cadastro</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Cadastro")}
+        >
+          <Text style={styles.buttonText}>Cadastre-se</Text>
         </TouchableOpacity>
       </Animatable.View>
     </View>
