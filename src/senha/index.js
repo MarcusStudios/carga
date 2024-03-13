@@ -12,34 +12,37 @@ import {
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { auth } from "../../services/firebaseConfig";
-import {signInWithEmailAndPassword} from "firebase/auth"
-import { initializeAuth, getReactNativePersistence } from "firebase/auth";
-import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
-import {app} from "../../services/firebaseConfig.js";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../services/firebaseConfig";
 
-export default function Signin() {
-  const [userMail, setUserMail] = useState("");
-  const [userPass, setUserPass] = useState("");
+export default function Senha() {
+  const [userMail, setUserMail] = useState('');
   
   
   const navigation = useNavigation();
 
-  function userlogin() {
-    signInWithEmailAndPassword(auth, userMail, userPass)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        alert("Login efetuado com sucesso!");
-        console.log(user);
-        navigation.navigate("Home");
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-      });
+  function replacePass(){
+    if(userMail !== ""){
+        sendPasswordResetEmail(auth, userMail)
+        .then(() => {
+            alert("Email enviado:"+userMail)
+            navigation.navigate("Signin")
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            alert("Ops alguma coisa nao deu certo" +errorMessage+ "Tente novamente")
+            return;
+        })
+
+    }else{
+        alert("Preencha todos os campos")
+        return;
+    }
   }
+    
+        
+        
+   
   return (
     <View style={styles.container}>
       <Animatable.View
@@ -47,46 +50,26 @@ export default function Signin() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Bem-vindo(a)</Text>
+        <Text style={styles.message}>Redefinir Senha</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Email</Text>
 
         <TextInput
-          placeholder="Digite um email..."
+          placeholder="Digite o email..."
           style={styles.input}
           value={userMail}
           onChangeText={setUserMail}
         />
 
-        <Text style={styles.title}>Senha</Text>
-        <TextInput
-          placeholder="Digite um senha..."
-          style={styles.input}
-          value={userPass}
-          onChangeText={setUserPass}
-        />
 
-        <TouchableOpacity style={styles.button} onPress={userlogin}>
+        <TouchableOpacity style={styles.button} onPress={replacePass}>
           
-          <Text style={styles.buttonText}>Acessar</Text>
+          <Text style={styles.buttonText}>Enviar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Cadastro")}
-        >
-          <Text style={styles.buttonText}>Cadastre-se</Text>
-          </TouchableOpacity>
-
-
-          <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Senha")}
-        >
-          <Text style={styles.buttonText}>Esqueci Senha</Text>
-        </TouchableOpacity>
+       
 
 
 
@@ -160,6 +143,6 @@ const styles = StyleSheet.create({
   registerText: {
     color: "white",
     fontSize: 18,
-    fontWeight: "400",
+    fontFamily: "Ubuntu_700Bold",
   },
 });
