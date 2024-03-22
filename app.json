@@ -29,8 +29,8 @@
     "expo": {
       "userInterfaceStyle": "automatic"
     },
-    "plugins": [
-      "expo-font"
+    "plugins":[
+      
     ]
   }
 }

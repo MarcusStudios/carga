@@ -13,15 +13,18 @@ import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { auth } from "../../services/firebaseConfig";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { app } from "../../services/firebaseConfig.js";
 
-export default function Cadastro(){
+
+export default function Cadastro() {
   const [userMail, setUserMail] = useState("");
   const [userPass, setUserPass] = useState("");
-
 
   const navigation = useNavigation();
 
@@ -34,16 +37,12 @@ export default function Cadastro(){
           const user = userCredential.user;
           alert("Conta criada com sucesso");
           navigation.navigate("Home");
-
-
         })
         .catch((error) => {
           const errorMessage = error.code;
           alert(errorMessage);
           navigation.navigate("Signin");
-
-
-        })
+        });
     }
   }
   return (
@@ -55,17 +54,17 @@ export default function Cadastro(){
       >
         <Text style={styles.message}>Cadastre-se</Text>
       </Animatable.View>
-  
+
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Email</Text>
-  
+
         <TextInput
           placeholder="Digite um email..."
           style={styles.input}
           value={userMail}
           onChangeText={setUserMail}
         />
-  
+
         <Text style={styles.title}>Senha</Text>
         <TextInput
           placeholder="Digite um senha..."
@@ -73,60 +72,14 @@ export default function Cadastro(){
           value={userPass}
           onChangeText={setUserPass}
         />
-  
+
         <TouchableOpacity style={styles.button} onPress={newUser}>
-  
           <Text style={styles.buttonText}>Criar Conta</Text>
         </TouchableOpacity>
-  
-  
       </Animatable.View>
     </View>
   );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
 
 const styles = StyleSheet.create({
   container: {
