@@ -2,10 +2,10 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
   TextInput,
-  TouchableOpacity,
   Button,
+  TouchableOpacity,
+  StyleSheet,
   useColorScheme,
 } from "react-native";
 
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     borderColor: "#20232a",
     borderRadius: 6,
     backgroundColor: "#61dafb",
-    color: "#20232a",
     textAlign: "center",
+    color: "#20232a",
     fontSize: 30,
     fontWeight: "bold",
   },

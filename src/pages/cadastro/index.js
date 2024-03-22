@@ -21,7 +21,6 @@ import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { app } from "../../services/firebaseConfig.js";
 
-
 export default function Cadastro() {
   const [userMail, setUserMail] = useState("");
   const [userPass, setUserPass] = useState("");
