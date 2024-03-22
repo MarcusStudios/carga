@@ -16,33 +16,30 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
 
 export default function Senha() {
-  const [userMail, setUserMail] = useState('');
-  
-  
+  const [userMail, setUserMail] = useState("");
+
   const navigation = useNavigation();
 
-  function replacePass(){
-    if(userMail !== ""){
-        sendPasswordResetEmail(auth, userMail)
+  function replacePass() {
+    if (userMail !== "") {
+      sendPasswordResetEmail(auth, userMail)
         .then(() => {
-            alert("Email enviado:"+userMail)
-            navigation.navigate("Signin")
+          alert("Email enviado:" + userMail);
+          navigation.navigate("Signin");
         })
         .catch((error) => {
-            const errorMessage = error.message;
-            alert("Ops alguma coisa nao deu certo" +errorMessage+ "Tente novamente")
-            return;
-        })
-
-    }else{
-        alert("Preencha todos os campos")
-        return;
+          const errorMessage = error.message;
+          alert(
+            "Ops alguma coisa nao deu certo" + errorMessage + "Tente novamente"
+          );
+          return;
+        });
+    } else {
+      alert("Preencha todos os campos");
+      return;
     }
   }
-    
-        
-        
-   
+
   return (
     <View style={styles.container}>
       <Animatable.View
@@ -63,22 +60,9 @@ export default function Senha() {
           onChangeText={setUserMail}
         />
 
-
         <TouchableOpacity style={styles.button} onPress={replacePass}>
-          
           <Text style={styles.buttonText}>Enviar</Text>
         </TouchableOpacity>
-
-       
-
-
-
-
-
-
-
-
-
       </Animatable.View>
     </View>
   );
