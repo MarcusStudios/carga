@@ -2,8 +2,8 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
   TextInput,
+  StyleSheet,
   TouchableOpacity,
   Button,
   useColorScheme,
@@ -66,7 +66,7 @@ export default function Cadastro() {
 
         <Text style={styles.title}>Senha</Text>
         <TextInput
-          placeholder="Digite um senha..."
+          placeholder="Digite uma senha..."
           style={styles.input}
           value={userPass}
           onChangeText={setUserPass}
