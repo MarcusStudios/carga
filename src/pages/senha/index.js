@@ -12,8 +12,8 @@ import {
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { auth } from "../../services/firebaseConfig";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../services/firebaseConfig";
 
 export default function Senha() {
   const [userMail, setUserMail] = useState("");

@@ -3,8 +3,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Welcome from "../pages/welcome";
 import Signin from "../pages/signin";
 import Cadastro from "../pages/cadastro";
-import Senha from "../senha";
+import Senha from "../pages/senha";
 import Home from "../pages/home";
+import Empregado from "../pages/empregado";
+import Cliente from "../pages/cliente";
+import Produto from "../pages/produto";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +47,28 @@ export default function Routes() {
         component={Home}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen
+        name="Empregado"
+        component={Empregado}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="Cliente"
+        component={Cliente}
+        options={{ headerShown: false }}
+      />
+
+
+        <Stack.Screen
+        name="Produto"
+        component={Produto}
+        options={{ headerShown: false }}
+      />
+
+
+
     </Stack.Navigator>
   );
 }
