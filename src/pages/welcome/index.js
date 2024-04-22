@@ -12,7 +12,7 @@ export default function Welcome() {
       <View style={styles.containerLogo}>
         <Animatable.Image
           animation="flipInY"
-          source={require("../../asset/Imagem_do_WhatsApp_de_2024-02-16_à_s__20.42.16_4ec919db-removebg-preview.png")}
+          source={require("../../asset/logo.png")}
           style={{ width: "100%" }}
           resizeMode="contain"
         />
