@@ -62,7 +62,7 @@ export default function Signin() {
 
         <Text style={styles.title}>Senha</Text>
         <TextInput
-          placeholder="Digite um senha..."
+          placeholder="Digite umx senha..."
           style={styles.input}
           value={userPass}
           onChangeText={setUserPass}
